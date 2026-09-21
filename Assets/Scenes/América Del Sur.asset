@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09738d65a23e9f24f924bf260f9ceb24, type: 3}
   m_Name: "Am\xE9rica Del Sur"
   m_EditorClassIdentifier: Assembly-CSharp::ContinentData
-  continentName: 
+  continentName: "Am\xE9rica Del Sur"
   cameraFocusPoint: {x: 0, y: 0, z: 0}
   cameraZoomDistance: 5
   highlight3D: {fileID: 0}

@@ -11,7 +11,7 @@ public class IntroSequence : MonoBehaviour
     public GameObject rouletteButton; // botón 3D para continuar
 
     [Header("Textos")]
-    [TextArea] public string title = "EARTHBALANCE 2100";
+    [TextArea] public string title = "AlPABALANCE 2100";
     [TextArea]
     public string subtitle =
         "100 años. Un planeta. Cada decisión tiene consecuencias.\n\n" +
