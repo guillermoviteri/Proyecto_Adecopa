@@ -1,0 +1,617 @@
+{
+  "continentes": [
+    {
+      "clave": "AmericaSur",
+      "nombre": "América del Sur",
+      "escena": "AmericaSur",
+      "color": "#3DDC84",
+      "pais": "PAMAY",
+      "crisis": "Una sequía destruyó las cosechas de <b>PAMAY</b>. Millones de personas no tienen qué comer.\n\n<b>PAMAY necesita urgentemente 500 toneladas de alimentos.</b>",
+      "ejercicios": [
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "Ubica a PAMAY",
+          "texto": "Informe satelital: <b>PAMAY</b> está en la costa del Océano Pacífico, al oeste de la cordillera de los Andes. <b>MORA</b>, el país que tiene alimentos, está al este de la cordillera, en la llanura amazónica.\n\n¿Qué ruta debe seguir un camión con alimentos que va de MORA a PAMAY?",
+          "materias": ["Ciencias Sociales"],
+          "competencias": ["Análisis de información"],
+          "opciones": [
+            { "texto": "Cruzar la cordillera de los Andes de este a oeste, hasta la costa del Pacífico.", "puntos": 100, "explicacion": "Exacto: MORA está al este de los Andes y PAMAY al oeste, junto al Pacífico.", "efectos": "sociedad+3" },
+            { "texto": "Navegar por el Océano Atlántico hasta llegar a PAMAY.", "puntos": 0, "explicacion": "PAMAY está en la costa del Pacífico, no del Atlántico.", "efectos": "economia-3" },
+            { "texto": "Cruzar el desierto del Sahara.", "puntos": 0, "explicacion": "El Sahara está en África, no en América del Sur.", "efectos": "economia-3" },
+            { "texto": "Ir de oeste a este, alejándose de los Andes.", "puntos": 0, "explicacion": "Esa ruta va en dirección contraria: PAMAY está al oeste.", "efectos": "economia-3" }
+          ]
+        },
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "Misión de comunicación",
+          "texto": "Debes enviar una solicitud diplomática al gobierno de <b>MORA</b> pidiendo alimentos para <b>PAMAY</b>.\n\nPara: Ministerio de Relaciones Exteriores de MORA\n\n¿Cuál es el <b>asunto</b> correcto y bien escrito?",
+          "materias": ["Comunicación"],
+          "competencias": ["Análisis de información"],
+          "opciones": [
+            { "texto": "Solicitud urgente de alimentos para PAMAY", "puntos": 100, "explicacion": "Claro, formal y sin errores: el destinatario entiende qué se pide y para quién.", "efectos": "sociedad+3" },
+            { "texto": "nesesitamos comida ya", "puntos": 0, "explicacion": "Tiene errores de ortografía (se escribe 'necesitamos') y no es formal para un gobierno.", "efectos": "sociedad-3" },
+            { "texto": "Solicitud urgente de alimentos para MORA", "puntos": 20, "explicacion": "Está bien escrito, pero el país que necesita alimentos es PAMAY, no MORA.", "efectos": "sociedad-2" },
+            { "texto": "Hola, ¿cómo están?", "puntos": 0, "explicacion": "Un saludo no es un asunto: el asunto debe decir de qué trata el mensaje.", "efectos": "sociedad-2" }
+          ]
+        },
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "MORA responde en inglés",
+          "texto": "Llega la respuesta del gobierno de MORA:\n\n<i>\"We can provide 350 tons immediately, but transportation costs will increase by 12%.\"</i>\n\n¿Qué dice el mensaje?",
+          "materias": ["Idiomas", "Comunicación"],
+          "competencias": ["Análisis de información"],
+          "opciones": [
+            { "texto": "MORA puede enviar 350 toneladas de inmediato, pero el transporte costará 12% más.", "puntos": 100, "explicacion": "Correcto: 'immediately' = de inmediato; 'increase by 12%' = aumentará 12%.", "efectos": "sociedad+3" },
+            { "texto": "MORA enviará las 500 toneladas gratis.", "puntos": 0, "explicacion": "El mensaje habla de 350 toneladas y de un aumento de costo.", "efectos": "economia-3" },
+            { "texto": "MORA enviará 350 toneladas dentro de 12 días.", "puntos": 0, "explicacion": "El 12 es un porcentaje (12%), no días.", "efectos": "economia-3" },
+            { "texto": "MORA pide 12 toneladas de alimentos a cambio.", "puntos": 0, "explicacion": "No piden nada a cambio: avisan que el transporte será más caro.", "efectos": "economia-3" }
+          ]
+        },
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "¿Alcanza el presupuesto?",
+          "texto": "Datos de la operación:\n- Presupuesto: <b>US$840,000</b>\n- Costo: <b>US$2,100</b> por tonelada\n- El costo total sube <b>12%</b> por el transporte\n\n¿Cuánto cuestan las 350 toneladas de MORA y alcanza el presupuesto?",
+          "materias": ["Matemática"],
+          "competencias": ["Resolución de problemas"],
+          "opciones": [
+            { "texto": "US$823,200. Sí alcanza y sobran US$16,800.", "puntos": 100, "explicacion": "350 × 2,100 = 735,000. Con 12% más: 735,000 × 1.12 = 823,200. Y 840,000 - 823,200 = 16,800.", "efectos": "economia+5" },
+            { "texto": "US$735,000. Sí alcanza.", "puntos": 30, "explicacion": "Olvidaste sumar el 12% del transporte: 735,000 × 1.12 = 823,200.", "efectos": "economia-4" },
+            { "texto": "US$882,000. No alcanza.", "puntos": 0, "explicacion": "Ese resultado usa 20% en vez de 12%. El costo real es 823,200.", "efectos": "economia-4" },
+            { "texto": "US$1,176,000. No alcanza.", "puntos": 0, "explicacion": "Calculaste 500 toneladas, pero MORA solo ofrece 350.", "efectos": "economia-4" }
+          ]
+        },
+        {
+          "nivelMin": 2,
+          "tipo": "decision",
+          "titulo": "Presión social",
+          "texto": "Con las 350 toneladas de MORA aún faltan <b>150 toneladas</b> para llegar a las 500 que necesita PAMAY. Antes de que respondas, alguien te interrumpe...",
+          "quien": "Diplomático de PAMÓN",
+          "dice": "No necesitamos seguir calculando. Los demás países ya aceptaron. Aprueba la operación inmediatamente.",
+          "materias": [],
+          "competencias": ["Resistencia a presión social", "Toma de decisiones", "Pensamiento crítico", "Creatividad"],
+          "opciones": [
+            { "texto": "Hacerle caso y aprobar sin revisar nada.", "puntos": 20, "explicacion": "Aprobaste rápido para quedar bien, pero nadie verificó los números ni quién cubrirá las 150 toneladas que faltan.", "efectos": "sociedad+2 economia-6" },
+            { "texto": "Verificar primero los cálculos antes de aprobar.", "puntos": 100, "explicacion": "Revisaste los números: la compra cabe en el presupuesto. Decidir con datos, y no por presión, es más seguro.", "efectos": "economia+4 sociedad+2" },
+            { "texto": "Buscar una segunda alternativa para las 150 toneladas que faltan.", "puntos": 90, "explicacion": "Buscaste otro proveedor para completar las 500 toneladas. Tomó más tiempo, pero nadie se quedó sin comida.", "efectos": "sociedad+5 recursos+3 economia-3" }
+          ]
+        },
+        {
+          "nivelMin": 3,
+          "tipo": "decision",
+          "titulo": "El consejo de la IA",
+          "texto": "PAMAY quiere evitar otra crisis alimentaria en el futuro y consulta a su asistente de inteligencia artificial.",
+          "quien": "ALPA-IA (asistente virtual)",
+          "dice": "Lo mejor es talar 2,000 hectáreas de selva amazónica y sembrar soya. Es 100% seguro y no tiene ninguna desventaja.",
+          "materias": ["Biología"],
+          "competencias": ["Pensamiento crítico", "Análisis de información"],
+          "opciones": [
+            { "texto": "Aceptar: la IA siempre tiene la razón.", "puntos": 10, "explicacion": "Una IA puede equivocarse. Talar la selva destruye la biodiversidad y altera las lluvias de toda la región.", "efectos": "recursos+8 economia+6", "luego": "La tala redujo las lluvias: las cosechas de PAMAY bajaron y desaparecieron especies.", "efectosLuego": "ambiente-16 recursos-8" },
+            { "texto": "Cuestionarla: talar la selva afecta la biodiversidad y el ciclo del agua. Mejor recuperar suelos ya deforestados y usar cultivos resistentes a la sequía.", "puntos": 100, "explicacion": "Bien: detectaste que el argumento de la IA era incompleto ('ninguna desventaja' casi nunca es cierto).", "efectos": "recursos+5 ambiente+3" },
+            { "texto": "Ignorar el problema y comprar alimentos a otros países para siempre.", "puntos": 30, "explicacion": "Depender siempre de otros países es caro y arriesgado.", "efectos": "economia-8 sociedad-2" }
+          ]
+        },
+        {
+          "nivelMin": 4,
+          "tipo": "pregunta",
+          "titulo": "Agua para regar",
+          "texto": "El río que riega los cultivos de PAMAY tiene <b>pH 4.5</b> por residuos de una mina. Los cultivos crecen mejor con agua de pH entre 6 y 7.\n\n¿Qué significa ese pH y qué se debe hacer?",
+          "materias": ["Química", "Biología"],
+          "competencias": ["Resolución de problemas"],
+          "opciones": [
+            { "texto": "El agua es ácida: hay que neutralizarla (por ejemplo, con cal) y controlar los residuos de la mina.", "puntos": 100, "explicacion": "Correcto: un pH menor que 7 es ácido. La cal es una base que neutraliza la acidez.", "efectos": "recursos+6 ambiente+4" },
+            { "texto": "El agua es básica: hay que agregarle más ácido.", "puntos": 0, "explicacion": "Un pH de 4.5 es ácido, no básico. Agregar ácido empeoraría todo.", "efectos": "recursos-5 ambiente-3" },
+            { "texto": "El agua es neutra: se puede usar sin problema.", "puntos": 0, "explicacion": "El agua neutra tiene pH 7. Con pH 4.5 los cultivos se dañan.", "efectos": "recursos-5" },
+            { "texto": "El agua es ácida: hay que agregarle vinagre.", "puntos": 0, "explicacion": "El vinagre también es ácido: bajaría todavía más el pH.", "efectos": "recursos-5 ambiente-3" }
+          ]
+        },
+        {
+          "nivelMin": 5,
+          "tipo": "decision",
+          "titulo": "Crisis internacional",
+          "texto": "El hambre se extiende a tres países vecinos. PAMAY ya recibió sus 500 toneladas y tiene <b>80 toneladas de reserva</b>. MORA envía un mensaje:\n\n<i>\"If PAMAY shares its reserve, we will lower transport costs by 5% next year.\"</i>",
+          "materias": ["Idiomas"],
+          "competencias": ["Negociación", "Estrategia", "Toma de decisiones"],
+          "opciones": [
+            { "texto": "Compartir las 80 toneladas de reserva con los vecinos.", "puntos": 80, "explicacion": "Ayudaste a los vecinos, aunque PAMAY quedó sin reserva para emergencias.", "efectos": "sociedad+8 recursos-6", "luego": "MORA cumplió su promesa: el transporte bajó 5% y los vecinos apoyan a PAMAY.", "efectosLuego": "economia+6" },
+            { "texto": "Compartir la mitad (40 toneladas) y guardar 40 para emergencias.", "puntos": 100, "explicacion": "Equilibraste solidaridad y prudencia. Además entendiste la oferta de MORA: compartir la reserva baja 5% el transporte.", "efectos": "sociedad+5 recursos-3", "luego": "La reserva de emergencia salvó a PAMAY en la siguiente sequía, y el transporte bajó 5%.", "efectosLuego": "recursos+5 economia+4" },
+            { "texto": "No compartir nada: primero PAMAY.", "puntos": 30, "explicacion": "Protegiste la reserva, pero los vecinos quedaron sin ayuda.", "efectos": "recursos+2 sociedad-8", "luego": "Los países vecinos rompieron sus acuerdos comerciales con PAMAY.", "efectosLuego": "economia-8" }
+          ]
+        }
+      ]
+    },
+    {
+      "clave": "Europa",
+      "nombre": "Europa",
+      "escena": "Europa",
+      "color": "#38B6FF",
+      "pais": "MARA",
+      "crisis": "<b>MARA</b>, la ciudad más poblada de Europa, sufre apagones todos los días: la demanda de electricidad es mayor que la producción.\n\nEl invierno llega en 3 meses y sin calefacción la situación será muy grave.",
+      "ejercicios": [
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "¿Cuánta energía falta?",
+          "texto": "En las horas de mayor consumo, MARA necesita <b>1,200 MW</b> (megavatios), pero solo produce <b>900 MW</b>.\n\n¿Qué porcentaje de la demanda NO se está cubriendo?",
+          "materias": ["Matemática"],
+          "competencias": ["Análisis de información"],
+          "opciones": [
+            { "texto": "25%", "puntos": 100, "explicacion": "Faltan 1,200 - 900 = 300 MW. Y 300 ÷ 1,200 = 0.25 = 25%.", "efectos": "economia+4" },
+            { "texto": "33%", "puntos": 20, "explicacion": "Dividiste entre la producción (300 ÷ 900). El porcentaje se calcula sobre la demanda: 300 ÷ 1,200 = 25%.", "efectos": "economia-3" },
+            { "texto": "75%", "puntos": 0, "explicacion": "75% es lo que SÍ se cubre (900 ÷ 1,200). Falta el 25%.", "efectos": "economia-3" },
+            { "texto": "30%", "puntos": 0, "explicacion": "Faltan 300 MW de 1,200: eso es 25%, no 30%.", "efectos": "economia-3" }
+          ]
+        },
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "Eficiencia de un panel solar",
+          "texto": "Un panel solar recibe <b>1,000 W</b> de energía del sol y entrega <b>200 W</b> de electricidad.\n\n¿Cuál es su eficiencia?",
+          "materias": ["Física"],
+          "competencias": ["Resolución de problemas"],
+          "opciones": [
+            { "texto": "20%", "puntos": 100, "explicacion": "Eficiencia = energía útil ÷ energía recibida = 200 ÷ 1,000 = 0.20 = 20%.", "efectos": "tecnologia+4" },
+            { "texto": "80%", "puntos": 0, "explicacion": "80% es la energía que se pierde (por ejemplo, como calor). La eficiencia es 20%.", "efectos": "tecnologia-3" },
+            { "texto": "5%", "puntos": 0, "explicacion": "Dividiste al revés (1,000 ÷ 200 = 5). La eficiencia es 200 ÷ 1,000 = 20%.", "efectos": "tecnologia-3" },
+            { "texto": "200%", "puntos": 0, "explicacion": "Ninguna máquina entrega más energía de la que recibe: la eficiencia siempre es menor que 100%.", "efectos": "tecnologia-3" }
+          ]
+        },
+        {
+          "nivelMin": 1,
+          "tipo": "decision",
+          "titulo": "Construcción de una central energética",
+          "texto": "MARA necesita producir 300 MW más. <b>No existe una respuesta perfecta:</b> cada opción tiene ventajas y desventajas. Evalúa las alternativas.",
+          "materias": [],
+          "competencias": ["Toma de decisiones", "Estrategia", "Análisis de información"],
+          "opciones": [
+            { "texto": "Carbón: energía barata y empleo, pero más CO<sub>2</sub> y peor calidad del aire.", "puntos": 60, "explicacion": "La energía llegó rápido y barata, pero el aire de MARA se ensució.", "efectos": "economia+10 sociedad+4 ambiente-12", "luego": "El humo de la central de carbón aumentó las enfermedades respiratorias.", "efectosLuego": "ambiente-6 sociedad-6" },
+            { "texto": "Solar: menos contaminación, pero mayor inversión inicial y producción variable.", "puntos": 90, "explicacion": "Invertiste mucho al inicio y los días nublados se produce menos, pero el aire sigue limpio.", "efectos": "ambiente+8 economia-8 tecnologia+4", "luego": "Los paneles ya se pagaron: la energía solar sale casi gratis.", "efectosLuego": "economia+8" },
+            { "texto": "Nuclear: mucha energía y bajo CO<sub>2</sub>, pero alto costo inicial y gestión de residuos.", "puntos": 85, "explicacion": "Mucha energía estable y sin humo, pero cara y con residuos peligrosos.", "efectos": "ambiente+4 economia-10 tecnologia+8", "luego": "Los residuos nucleares deben guardarse con seguridad durante miles de años.", "efectosLuego": "recursos-4 ambiente-2" }
+          ]
+        },
+        {
+          "nivelMin": 2,
+          "tipo": "decision",
+          "titulo": "Presión social",
+          "texto": "Una delegación extranjera ofrece gas para las calefacciones de MARA.",
+          "quien": "Embajadora de TAXIS",
+          "dice": "Te vendemos gas barato, pero solo si firmas HOY un contrato por 30 años. Si no, se lo vendemos a otro país.",
+          "materias": [],
+          "competencias": ["Resistencia a presión social", "Negociación", "Toma de decisiones"],
+          "opciones": [
+            { "texto": "Firmar hoy sin leer el contrato.", "puntos": 20, "explicacion": "Firmaste bajo presión sin leer las condiciones.", "efectos": "economia+6 ambiente-4", "luego": "El contrato de 30 años obligó a MARA a pagar precios altísimos cuando el gas subió.", "efectosLuego": "economia-12" },
+            { "texto": "Pedir tiempo para leer el contrato y compararlo con otras ofertas.", "puntos": 100, "explicacion": "Una oferta que 'vence hoy' es una técnica de presión. Comparar opciones es lo responsable.", "efectos": "economia+3" },
+            { "texto": "Proponer un contrato corto de 5 años mientras MARA construye energía propia.", "puntos": 100, "explicacion": "Negociaste: gas para este invierno sin atar a la ciudad por 30 años.", "efectos": "economia+4 tecnologia+2" }
+          ]
+        },
+        {
+          "nivelMin": 3,
+          "tipo": "pregunta",
+          "titulo": "Dos datos que no coinciden",
+          "texto": "Para reducir el consumo de energía, MARA analiza cómo se mueven sus habitantes.\n\nEncuesta oficial: <i>de 1,000,000 de habitantes, 350,000 usan auto propio y 650,000 usan transporte público o bicicleta.</i>\n\n¿Qué concluyes?",
+          "quien": "ALPA-IA (asistente virtual)",
+          "dice": "Según mis datos, el 90% de los habitantes usa auto propio. La mejor solución es construir más autopistas.",
+          "materias": ["Matemática", "Ciencias Sociales"],
+          "competencias": ["Pensamiento crítico", "Análisis de información"],
+          "opciones": [
+            { "texto": "La IA se equivocó: solo el 35% usa auto. Conviene mejorar el transporte público.", "puntos": 100, "explicacion": "350,000 ÷ 1,000,000 = 35%. Siempre contrasta lo que dice una IA con fuentes oficiales.", "efectos": "ambiente+5 sociedad+5" },
+            { "texto": "La IA tiene la razón porque es una inteligencia artificial.", "puntos": 0, "explicacion": "Las IA también se equivocan o usan datos viejos. La encuesta oficial dice 35%.", "efectos": "ambiente-6 economia-4" },
+            { "texto": "El 65% usa auto propio.", "puntos": 0, "explicacion": "El 65% usa transporte público o bicicleta; el auto propio es el 35%.", "efectos": "ambiente-4" },
+            { "texto": "Con esos datos no se puede calcular nada.", "puntos": 10, "explicacion": "Sí se puede: 350,000 ÷ 1,000,000 = 35%.", "efectos": "economia-2" }
+          ]
+        },
+        {
+          "nivelMin": 4,
+          "tipo": "pregunta",
+          "titulo": "Un fondo europeo",
+          "texto": "El Consejo Europeo publica este anuncio:\n\n<i>\"Cities that reduce their energy consumption by 15% before 2105 will receive a green fund of 2 million euros.\"</i>\n\n¿Qué debe hacer MARA para recibir el fondo?",
+          "materias": ["Idiomas", "Comunicación"],
+          "competencias": ["Análisis de información"],
+          "opciones": [
+            { "texto": "Reducir su consumo de energía en 15% antes del año 2105.", "puntos": 100, "explicacion": "'Reduce' = reducir; 'before 2105' = antes de 2105.", "efectos": "economia+5" },
+            { "texto": "Aumentar su consumo de energía en 15%.", "puntos": 0, "explicacion": "'Reduce' significa reducir, no aumentar.", "efectos": "economia-3" },
+            { "texto": "Pagar 2 millones de euros antes de 2105.", "puntos": 0, "explicacion": "Los 2 millones son el premio que MARA recibiría, no un pago.", "efectos": "economia-3" },
+            { "texto": "Plantar 15 árboles antes de 2105.", "puntos": 0, "explicacion": "El anuncio habla de consumo de energía, no de árboles.", "efectos": "economia-3" }
+          ]
+        },
+        {
+          "nivelMin": 4,
+          "tipo": "decision",
+          "titulo": "Una ciudad inteligente",
+          "texto": "Para ahorrar energía, MARA puede instalar un sistema de inteligencia artificial que controle el alumbrado público y los semáforos.",
+          "materias": ["Tecnología"],
+          "competencias": ["Pensamiento crítico", "Toma de decisiones", "Estrategia"],
+          "opciones": [
+            { "texto": "Instalarlo y dejar que la IA decida todo, sin supervisión humana.", "puntos": 40, "explicacion": "Ahorraste energía rápido, pero nadie vigila los errores del sistema.", "efectos": "tecnologia+10 economia+5", "luego": "Un error de la IA apagó todos los semáforos durante una hora: hubo caos en la ciudad.", "efectosLuego": "sociedad-10 tecnologia-4" },
+            { "texto": "Instalarlo con supervisión humana y un botón de emergencia.", "puntos": 100, "explicacion": "La automatización funciona mejor con personas que la supervisan.", "efectos": "tecnologia+8 economia+3 sociedad+2" },
+            { "texto": "No instalar nada: la tecnología es peligrosa.", "puntos": 30, "explicacion": "Evitaste riesgos, pero también perdiste el ahorro de energía.", "efectos": "tecnologia-5 economia-2" }
+          ]
+        },
+        {
+          "nivelMin": 5,
+          "tipo": "decision",
+          "titulo": "Crisis internacional",
+          "texto": "Una tormenta dañó la red eléctrica de TAXIS y SUJAN, que piden a MARA <b>100 MW</b>.\n\nCon su nueva central, MARA produce <b>1,200 MW</b> y consume <b>1,150 MW</b>.\n\n¿Qué propuesta es posible y justa?",
+          "materias": ["Matemática", "Ciencias Sociales"],
+          "competencias": ["Estrategia", "Negociación", "Resolución de problemas"],
+          "opciones": [
+            { "texto": "Enviar los 50 MW que sobran y pedir a la población ahorrar 5% para enviar un poco más.", "puntos": 100, "explicacion": "Sobran 1,200 - 1,150 = 50 MW. Con 5% de ahorro (5% de 1,150 = 57.5 MW), MARA puede enviar más de 100 MW sin apagones.", "efectos": "sociedad+6 economia+2" },
+            { "texto": "Enviar 100 MW aunque MARA se quede corta.", "puntos": 40, "explicacion": "1,200 - 100 = 1,100 MW, menos que los 1,150 que consume MARA: volvieron los apagones.", "efectos": "sociedad-4 economia-4" },
+            { "texto": "No enviar nada.", "puntos": 20, "explicacion": "MARA no tuvo problemas, pero dejó solos a sus vecinos.", "efectos": "sociedad-6", "luego": "TAXIS y SUJAN dejaron de venderle materiales a MARA.", "efectosLuego": "economia-8" },
+            { "texto": "Enviar 150 MW para quedar bien.", "puntos": 0, "explicacion": "Es imposible sin dejar a MARA a oscuras: solo sobran 50 MW.", "efectos": "sociedad-8 economia-6" }
+          ]
+        }
+      ]
+    },
+    {
+      "clave": "Africa",
+      "nombre": "África",
+      "escena": "Africa",
+      "color": "#FF9F43",
+      "pais": "SUJAN",
+      "crisis": "<b>SUJAN</b> enfrenta la peor sequía en 50 años. Su población crece rápido y el agua potable ya no alcanza para todos.\n\nLos pozos se secan y los cultivos se pierden.",
+      "ejercicios": [
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "Población en aumento",
+          "texto": "SUJAN tiene <b>20 millones</b> de habitantes y su población crece <b>3%</b> cada año.\n\n¿Cuántos habitantes tendrá aproximadamente dentro de un año?",
+          "materias": ["Matemática"],
+          "competencias": ["Resolución de problemas"],
+          "opciones": [
+            { "texto": "20.6 millones", "puntos": 100, "explicacion": "3% de 20 millones = 0.6 millones. 20 + 0.6 = 20.6 millones.", "efectos": "sociedad+3" },
+            { "texto": "23 millones", "puntos": 0, "explicacion": "Sumaste 3 millones, pero el 3% de 20 millones es 0.6 millones.", "efectos": "recursos-3" },
+            { "texto": "20.03 millones", "puntos": 0, "explicacion": "El 3% de 20 millones es 0.6 millones, no 0.03.", "efectos": "recursos-3" },
+            { "texto": "26 millones", "puntos": 0, "explicacion": "Eso sería un crecimiento de 30%, no de 3%.", "efectos": "recursos-3" }
+          ]
+        },
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "Agua segura",
+          "texto": "El agua del lago de SUJAN tiene barro y bacterias.\n\n¿Cuál es el orden correcto para potabilizarla?",
+          "materias": ["Química", "Biología"],
+          "competencias": ["Resolución de problemas"],
+          "opciones": [
+            { "texto": "Sedimentar (dejar reposar), filtrar y luego desinfectar (con cloro o hirviéndola).", "puntos": 100, "explicacion": "Primero se separan las partículas grandes, luego las pequeñas y al final se eliminan los microbios.", "efectos": "recursos+6 sociedad+4" },
+            { "texto": "Beberla primero y filtrarla después.", "puntos": 0, "explicacion": "¡Peligroso! Las bacterias causan enfermedades: el agua se trata antes de beberla.", "efectos": "sociedad-6" },
+            { "texto": "Solo colarla con una tela.", "puntos": 20, "explicacion": "La tela quita el barro, pero no elimina las bacterias: falta desinfectar.", "efectos": "sociedad-3" },
+            { "texto": "Agregarle azúcar para que sepa mejor.", "puntos": 0, "explicacion": "El azúcar no limpia el agua ni mata bacterias.", "efectos": "sociedad-5" }
+          ]
+        },
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "Comunicado oficial",
+          "texto": "<i>\"El Ministerio del Agua de SUJAN informa que desde el lunes el agua se repartirá por turnos: la zona norte recibirá agua de 6:00 a 10:00 y la zona sur de 14:00 a 18:00. Se recomienda guardar el agua en recipientes limpios y tapados.\"</i>\n\n¿Cuál es la idea principal del comunicado?",
+          "materias": ["Comunicación"],
+          "competencias": ["Análisis de información"],
+          "opciones": [
+            { "texto": "El agua se repartirá por turnos según la zona.", "puntos": 100, "explicacion": "Esa es la idea principal; lo demás son detalles y recomendaciones.", "efectos": "sociedad+4" },
+            { "texto": "La zona norte ya no tendrá agua.", "puntos": 0, "explicacion": "Sí tendrá agua: de 6:00 a 10:00.", "efectos": "sociedad-3" },
+            { "texto": "Hay que comprar recipientes nuevos.", "puntos": 10, "explicacion": "El comunicado pide recipientes limpios y tapados, no nuevos. Además, es un detalle.", "efectos": "sociedad-2" },
+            { "texto": "El lunes es feriado.", "puntos": 0, "explicacion": "El comunicado no dice eso: el lunes empiezan los turnos.", "efectos": "sociedad-3" }
+          ]
+        },
+        {
+          "nivelMin": 2,
+          "tipo": "decision",
+          "titulo": "Presión social",
+          "texto": "Un empresario quiere instalar una fábrica de agua embotellada junto al lago de SUJAN.",
+          "quien": "Empresario de TAXIS",
+          "dice": "Déjame instalar mi fábrica junto al lago: daré 5,000 empleos. Pero decide ya, tengo otras ofertas.",
+          "materias": [],
+          "competencias": ["Resistencia a presión social", "Negociación", "Toma de decisiones"],
+          "opciones": [
+            { "texto": "Aceptar ya: los empleos son lo más importante.", "puntos": 30, "explicacion": "Los empleos llegaron rápido, pero nadie limitó cuánta agua podía sacar la fábrica.", "efectos": "economia+10 sociedad+5", "luego": "La fábrica sacó tanta agua que el lago bajó a la mitad.", "efectosLuego": "recursos-14 ambiente-8" },
+            { "texto": "Aceptar solo si usa agua reciclada y respeta un límite de extracción.", "puntos": 100, "explicacion": "Negociaste empleos sin sacrificar el agua de la población.", "efectos": "economia+6 sociedad+4 recursos-2" },
+            { "texto": "Rechazar sin escuchar la propuesta.", "puntos": 40, "explicacion": "Protegiste el lago, pero perdiste la oportunidad de negociar empleos.", "efectos": "economia-4" }
+          ]
+        },
+        {
+          "nivelMin": 3,
+          "tipo": "decision",
+          "titulo": "Datos contradictorios",
+          "texto": "SUJAN consume <b>4 millones de litros</b> de agua del lago cada día. Le preguntas a tu asistente cuánta agua queda.",
+          "quien": "ALPA-IA (asistente virtual)",
+          "dice": "Dato 1: el lago tiene 800 millones de litros. Dato 2: el lago tiene 8 millones de litros. Ambos datos son correctos.",
+          "materias": ["Matemática"],
+          "competencias": ["Pensamiento crítico", "Análisis de información"],
+          "opciones": [
+            { "texto": "Verificar con una medición oficial antes de decidir.", "puntos": 100, "explicacion": "Los dos datos no pueden ser correctos a la vez: 800 millones alcanzan para 200 días; 8 millones, solo para 2 días.", "efectos": "recursos+4" },
+            { "texto": "Usar el dato de 800 millones: alcanza para 200 días, no hay de qué preocuparse.", "puntos": 20, "explicacion": "Elegiste el dato más cómodo sin verificarlo.", "efectos": "sociedad+2", "luego": "El dato real era 8 millones: el lago se secó en pocos días y hubo que traer agua en camiones.", "efectosLuego": "recursos-12 economia-6" },
+            { "texto": "Usar el dato de 8 millones sin verificar y cortar el agua a la mitad de la población.", "puntos": 40, "explicacion": "Fuiste prudente, pero sin comprobar el dato: causaste pánico.", "efectos": "recursos+3 sociedad-6" }
+          ]
+        },
+        {
+          "nivelMin": 4,
+          "tipo": "pregunta",
+          "titulo": "Consejo científico",
+          "texto": "Una científica internacional envía este mensaje:\n\n<i>\"Drip irrigation uses 50% less water than flood irrigation and increases crop yield.\"</i>\n\n¿Qué recomienda?",
+          "materias": ["Idiomas", "Biología"],
+          "competencias": ["Análisis de información"],
+          "opciones": [
+            { "texto": "Usar riego por goteo: gasta la mitad de agua y mejora la cosecha.", "puntos": 100, "explicacion": "'Drip irrigation' = riego por goteo; '50% less water' = 50% menos agua; 'crop yield' = rendimiento de la cosecha.", "efectos": "recursos+8 economia+3" },
+            { "texto": "Usar riego por inundación porque usa 50% más agua.", "puntos": 0, "explicacion": "Al revés: el riego por goteo usa 50% MENOS agua.", "efectos": "recursos-5" },
+            { "texto": "Dejar de regar los cultivos.", "puntos": 0, "explicacion": "El mensaje recomienda otra forma de regar, no dejar de hacerlo.", "efectos": "recursos-3 sociedad-3" },
+            { "texto": "El riego por goteo destruye los cultivos.", "puntos": 0, "explicacion": "'Increases crop yield' significa que la cosecha aumenta.", "efectos": "recursos-3" }
+          ]
+        },
+        {
+          "nivelMin": 4,
+          "tipo": "decision",
+          "titulo": "Bombear agua del subsuelo",
+          "texto": "SUJAN encontró agua en un pozo muy profundo. Para bombearla puede usar:",
+          "materias": [],
+          "competencias": ["Estrategia", "Toma de decisiones"],
+          "opciones": [
+            { "texto": "Bombas a diésel: baratas hoy.", "puntos": 50, "explicacion": "Instalación barata y rápida, pero depende del combustible y contamina.", "efectos": "recursos+8 economia+4 ambiente-6", "luego": "El precio del diésel se triplicó y muchas bombas se detuvieron.", "efectosLuego": "economia-8 recursos-6" },
+            { "texto": "Bombas solares: caras hoy, pero SUJAN tiene sol casi todo el año.", "puntos": 100, "explicacion": "Más caras al inicio, pero la energía del sol es gratis y abundante en SUJAN.", "efectos": "recursos+6 economia-6 tecnologia+4", "luego": "Las bombas solares llevan 20 años funcionando sin gastar combustible.", "efectosLuego": "economia+8 recursos+4" },
+            { "texto": "Sacar el agua a mano con baldes.", "puntos": 20, "explicacion": "No cuesta máquinas, pero es muy poca agua para 20 millones de personas.", "efectos": "sociedad-6 recursos+1" }
+          ]
+        },
+        {
+          "nivelMin": 5,
+          "tipo": "decision",
+          "titulo": "Crisis internacional",
+          "texto": "Por el cambio climático, <b>200,000 refugiados</b> llegan a SUJAN. Cada persona necesita al menos <b>20 litros de agua al día</b>.\n\n¿Cuánta agua extra se necesita y qué haces?",
+          "materias": ["Matemática", "Ciencias Sociales"],
+          "competencias": ["Resolución de problemas", "Estrategia", "Toma de decisiones"],
+          "opciones": [
+            { "texto": "4 millones de litros al día: pedir ayuda internacional y construir una planta potabilizadora.", "puntos": 100, "explicacion": "200,000 × 20 = 4,000,000 litros. Con ayuda internacional, SUJAN puede atender a todos.", "efectos": "sociedad+8 economia-6 recursos-2" },
+            { "texto": "400,000 litros al día: con eso alcanza.", "puntos": 0, "explicacion": "Error de cálculo: 200,000 × 20 = 4,000,000. Faltó agua para muchas personas.", "efectos": "sociedad-8 recursos-4" },
+            { "texto": "4 millones de litros al día: cerrar la frontera.", "puntos": 30, "explicacion": "El cálculo es correcto, pero cerrar la frontera dejó a miles de personas sin agua.", "efectos": "sociedad-10 recursos+3", "luego": "El conflicto con los países vecinos creció.", "efectosLuego": "sociedad-6 economia-4" },
+            { "texto": "40 millones de litros al día: es imposible, mejor no hacer nada.", "puntos": 0, "explicacion": "Calculaste mal (son 4 millones) y no actuaste.", "efectos": "sociedad-10" }
+          ]
+        }
+      ]
+    },
+    {
+      "clave": "Asia",
+      "nombre": "Asia",
+      "escena": "Asia",
+      "color": "#FF5A7A",
+      "pais": "TAXIS",
+      "crisis": "<b>TAXIS</b> tiene la megaciudad más grande del mundo: 40 millones de habitantes. El smog es tan denso que casi no se ve el sol y los hospitales están llenos.\n\nLa ciudad necesita respirar.",
+      "ejercicios": [
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "¿De dónde viene el smog?",
+          "texto": "Millones de autos a gasolina circulan cada día por TAXIS.\n\n¿Qué producen principalmente al quemar gasolina?",
+          "materias": ["Química"],
+          "competencias": ["Análisis de información"],
+          "opciones": [
+            { "texto": "Dióxido de carbono (CO<sub>2</sub>) y vapor de agua, además de otros gases contaminantes.", "puntos": 100, "explicacion": "La combustión de la gasolina produce CO<sub>2</sub> y agua; si es incompleta, también monóxido de carbono y hollín.", "efectos": "ambiente+3" },
+            { "texto": "Oxígeno puro.", "puntos": 0, "explicacion": "La combustión CONSUME oxígeno, no lo produce.", "efectos": "ambiente-3" },
+            { "texto": "Solo agua destilada.", "puntos": 0, "explicacion": "Además de vapor de agua se produce CO<sub>2</sub> y otros gases.", "efectos": "ambiente-3" },
+            { "texto": "Helio.", "puntos": 0, "explicacion": "El helio no se produce al quemar gasolina.", "efectos": "ambiente-3" }
+          ]
+        },
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "Leer los datos",
+          "texto": "Nivel de contaminación del aire (PM2.5) en TAXIS esta semana:\n\nLunes 150 · Martes 120 · Miércoles 180 · Jueves 90 · Viernes 160\n\n¿Cuál es el promedio de la semana?",
+          "materias": ["Matemática"],
+          "competencias": ["Análisis de información"],
+          "opciones": [
+            { "texto": "140", "puntos": 100, "explicacion": "150 + 120 + 180 + 90 + 160 = 700. Y 700 ÷ 5 = 140.", "efectos": "ambiente+3" },
+            { "texto": "150", "puntos": 20, "explicacion": "150 es la mediana (el valor del medio al ordenar), no el promedio.", "efectos": "ambiente-2" },
+            { "texto": "180", "puntos": 0, "explicacion": "180 es el valor máximo, no el promedio.", "efectos": "ambiente-2" },
+            { "texto": "700", "puntos": 0, "explicacion": "700 es la suma; falta dividir entre los 5 días.", "efectos": "ambiente-2" }
+          ]
+        },
+        {
+          "nivelMin": 1,
+          "tipo": "decision",
+          "titulo": "Menos smog",
+          "texto": "El gobierno de TAXIS te pide una medida para reducir el smog.",
+          "materias": [],
+          "competencias": ["Toma de decisiones", "Estrategia"],
+          "opciones": [
+            { "texto": "Construir un metro y usar buses eléctricos.", "puntos": 100, "explicacion": "Más caro al inicio, pero transporta a millones de personas sin humo.", "efectos": "ambiente+10 economia-6 sociedad+4" },
+            { "texto": "Prohibir todos los autos desde mañana.", "puntos": 40, "explicacion": "El aire mejoró rápido, pero millones no pudieron llegar a su trabajo.", "efectos": "ambiente+12 economia-10 sociedad-8", "luego": "Muchos negocios de reparto cerraron por la prohibición repentina.", "efectosLuego": "economia-6" },
+            { "texto": "Construir más autopistas.", "puntos": 20, "explicacion": "Más autopistas atraen más autos: el tráfico y el smog aumentan.", "efectos": "economia+6 ambiente-10" }
+          ]
+        },
+        {
+          "nivelMin": 2,
+          "tipo": "decision",
+          "titulo": "Presión social",
+          "texto": "En una reunión, el alcalde de TAXIS te hace una propuesta.",
+          "quien": "Alcalde de TAXIS",
+          "dice": "Todos mis asesores votaron por ocultar los datos de contaminación para no asustar a los turistas. Tú también estás de acuerdo, ¿verdad?",
+          "materias": [],
+          "competencias": ["Resistencia a presión social", "Pensamiento crítico", "Toma de decisiones"],
+          "opciones": [
+            { "texto": "Sí: si todos están de acuerdo, debe estar bien.", "puntos": 10, "explicacion": "Que todos opinen igual no hace que algo sea correcto.", "efectos": "economia+6", "luego": "Los datos se filtraron y la población perdió la confianza en su gobierno.", "efectosLuego": "sociedad-12" },
+            { "texto": "No: la población tiene derecho a saber para protegerse.", "puntos": 100, "explicacion": "Resististe la presión del grupo. La información de salud debe ser pública.", "efectos": "sociedad+6 economia-3" },
+            { "texto": "Publicar los datos junto con un plan para reducir el smog.", "puntos": 100, "explicacion": "Transparencia y soluciones: la mejor forma de no generar pánico.", "efectos": "sociedad+8 ambiente+2 economia-3" }
+          ]
+        },
+        {
+          "nivelMin": 3,
+          "tipo": "decision",
+          "titulo": "La IA quiere vigilar",
+          "texto": "Tu asistente propone un plan, pero no dice quién guardará los datos, ni por cuánto tiempo, ni cómo se protegerán.",
+          "quien": "ALPA-IA (asistente virtual)",
+          "dice": "Instalé cámaras con reconocimiento facial en toda la ciudad para multar a quien contamine. Ya funciona. ¿Lo activamos?",
+          "materias": ["Tecnología"],
+          "competencias": ["Pensamiento crítico", "Análisis de información", "Creatividad"],
+          "opciones": [
+            { "texto": "Activarlo ya: la IA sabe lo que hace.", "puntos": 20, "explicacion": "Aceptaste sin preguntar por la privacidad ni la seguridad de los datos.", "efectos": "tecnologia+6", "luego": "Unos hackers robaron los datos de millones de personas.", "efectosLuego": "sociedad-10 tecnologia-6" },
+            { "texto": "Antes, preguntar quién guarda los datos, por cuánto tiempo y con qué seguridad.", "puntos": 100, "explicacion": "Hiciste las preguntas clave: toda tecnología que usa datos personales necesita reglas claras.", "efectos": "tecnologia+4 sociedad+2" },
+            { "texto": "Mejor poner sensores de contaminación en fábricas y chimeneas, en vez de vigilar personas.", "puntos": 100, "explicacion": "Solución creativa: mides directamente la contaminación sin invadir la privacidad.", "efectos": "ambiente+6 tecnologia+4" }
+          ]
+        },
+        {
+          "nivelMin": 4,
+          "tipo": "pregunta",
+          "titulo": "El tren eléctrico",
+          "texto": "Un tren eléctrico recorre <b>90 km</b> entre dos distritos de TAXIS en <b>45 minutos</b>.\n\n¿Cuál es su velocidad media?",
+          "materias": ["Física", "Matemática"],
+          "competencias": ["Resolución de problemas"],
+          "opciones": [
+            { "texto": "120 km/h", "puntos": 100, "explicacion": "45 minutos = 0.75 horas. Velocidad = 90 ÷ 0.75 = 120 km/h.", "efectos": "tecnologia+3 ambiente+2" },
+            { "texto": "2 km/h", "puntos": 0, "explicacion": "90 ÷ 45 = 2 km por MINUTO, no por hora. En una hora serían 120 km.", "efectos": "tecnologia-3" },
+            { "texto": "90 km/h", "puntos": 0, "explicacion": "Recorre 90 km en menos de una hora, así que va a más de 90 km/h.", "efectos": "tecnologia-3" },
+            { "texto": "67.5 km/h", "puntos": 0, "explicacion": "Multiplicaste (90 × 0.75) en lugar de dividir.", "efectos": "tecnologia-3" }
+          ]
+        },
+        {
+          "nivelMin": 4,
+          "tipo": "pregunta",
+          "titulo": "Torres de aire limpio",
+          "texto": "Un ingeniero extranjero explica cómo funcionan las torres purificadoras:\n\n<i>\"The air filter tower cleans 30,000 cubic meters of air per hour, but it needs maintenance every two weeks or it stops working.\"</i>\n\n¿Qué es cierto?",
+          "materias": ["Idiomas"],
+          "competencias": ["Análisis de información"],
+          "opciones": [
+            { "texto": "La torre limpia 30,000 m³ de aire por hora y necesita mantenimiento cada dos semanas.", "puntos": 100, "explicacion": "'Per hour' = por hora; 'every two weeks' = cada dos semanas.", "efectos": "ambiente+6 tecnologia+3" },
+            { "texto": "La torre funciona dos semanas y luego se destruye.", "puntos": 0, "explicacion": "Dice que se detiene si NO recibe mantenimiento, no que se destruye.", "efectos": "tecnologia-3" },
+            { "texto": "La torre limpia 30,000 m³ de aire al día y nunca necesita mantenimiento.", "puntos": 0, "explicacion": "Es por hora ('per hour') y sí necesita mantenimiento.", "efectos": "tecnologia-3", "luego": "Sin mantenimiento, las torres se detuvieron y el smog volvió.", "efectosLuego": "ambiente-6" },
+            { "texto": "La torre necesita dos ingenieros para funcionar.", "puntos": 0, "explicacion": "'Two weeks' significa dos semanas, no dos ingenieros.", "efectos": "tecnologia-3" }
+          ]
+        },
+        {
+          "nivelMin": 5,
+          "tipo": "decision",
+          "titulo": "Crisis internacional",
+          "texto": "TAXIS fabrica el <b>60% de los chips</b> del mundo. Pero su fábrica más grande contamina un río que comparte con SUJAN. SUJAN exige cerrarla; el resto del mundo necesita los chips.",
+          "materias": [],
+          "competencias": ["Negociación", "Estrategia", "Resolución de problemas"],
+          "opciones": [
+            { "texto": "Cerrar la fábrica de inmediato.", "puntos": 50, "explicacion": "El río empezó a recuperarse, pero faltaron chips en todo el mundo.", "efectos": "ambiente+8 economia-12 tecnologia-8" },
+            { "texto": "Mantenerla abierta sin cambios.", "puntos": 10, "explicacion": "Los chips siguieron saliendo, pero el río se siguió contaminando.", "efectos": "economia+8 ambiente-12", "luego": "SUJAN rompió relaciones con TAXIS y el río quedó sin peces.", "efectosLuego": "ambiente-8 sociedad-6" },
+            { "texto": "Instalar una planta de tratamiento de aguas y compensar a SUJAN, con plazos que ambos puedan verificar.", "puntos": 100, "explicacion": "Una solución negociada: la fábrica sigue, el río se limpia y SUJAN recibe compensación.", "efectos": "ambiente+6 economia-4 sociedad+4" }
+          ]
+        }
+      ]
+    },
+    {
+      "clave": "AmericaNorte",
+      "nombre": "América del Norte",
+      "escena": "AmericaNorte",
+      "color": "#B388FF",
+      "pais": "PAMIR",
+      "crisis": "La economía de <b>PAMIR</b> se derrumba: el precio del petróleo se disparó, las fábricas cierran y el desempleo sube cada semana.\n\nEl mundo entero siente los efectos.",
+      "ejercicios": [
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "El precio del petróleo",
+          "texto": "El barril de petróleo costaba <b>US$80</b> y su precio subió <b>150%</b>.\n\n¿Cuál es el nuevo precio?",
+          "materias": ["Matemática"],
+          "competencias": ["Resolución de problemas"],
+          "opciones": [
+            { "texto": "US$200", "puntos": 100, "explicacion": "150% de 80 = 120. Nuevo precio: 80 + 120 = 200.", "efectos": "economia+4" },
+            { "texto": "US$120", "puntos": 30, "explicacion": "120 es solo el aumento; falta sumarlo al precio original: 80 + 120 = 200.", "efectos": "economia-3" },
+            { "texto": "US$230", "puntos": 0, "explicacion": "Sumaste 150 dólares, pero el aumento es de 150%, no de 150 dólares.", "efectos": "economia-3" },
+            { "texto": "US$150", "puntos": 0, "explicacion": "150 es el porcentaje, no el precio.", "efectos": "economia-3" }
+          ]
+        },
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "Economía familiar",
+          "texto": "En PAMIR muchas fábricas cerraron y el desempleo aumentó.\n\n¿Qué suele pasar con el consumo de las familias?",
+          "materias": ["Ciencias Sociales"],
+          "competencias": ["Análisis de información"],
+          "opciones": [
+            { "texto": "Baja, porque las familias tienen menos ingresos.", "puntos": 100, "explicacion": "Con menos empleo hay menos ingresos y las familias compran menos. Eso afecta a más negocios.", "efectos": "economia+3" },
+            { "texto": "Sube, porque las personas tienen más tiempo libre.", "puntos": 0, "explicacion": "Tener tiempo libre sin ingresos no permite comprar más.", "efectos": "economia-3" },
+            { "texto": "No cambia nada.", "puntos": 0, "explicacion": "El desempleo sí afecta el consumo.", "efectos": "economia-3" },
+            { "texto": "Se duplica.", "puntos": 0, "explicacion": "Sin ingresos, el consumo baja; no se duplica.", "efectos": "economia-3" }
+          ]
+        },
+        {
+          "nivelMin": 1,
+          "tipo": "decision",
+          "titulo": "Reactivar la economía",
+          "texto": "PAMIR necesita crear empleos rápidamente.",
+          "materias": [],
+          "competencias": ["Toma de decisiones", "Estrategia", "Creatividad"],
+          "opciones": [
+            { "texto": "Capacitar a los desempleados en energías renovables y tecnología.", "puntos": 100, "explicacion": "Una inversión que toma tiempo, pero prepara a PAMIR para el futuro.", "efectos": "sociedad+6 tecnologia+6 economia-4", "luego": "Los nuevos técnicos crearon empresas de energía limpia.", "efectosLuego": "economia+10" },
+            { "texto": "Bajar los impuestos a todas las fábricas, aunque contaminen.", "puntos": 40, "explicacion": "La economía reaccionó rápido, pero el ambiente pagó el costo.", "efectos": "economia+8 ambiente-8" },
+            { "texto": "Imprimir más dinero para repartirlo.", "puntos": 10, "explicacion": "Al principio la gente tuvo más dinero para gastar...", "efectos": "economia+4 sociedad+2", "luego": "La inflación se disparó: los precios se duplicaron y el dinero perdió valor.", "efectosLuego": "economia-12 sociedad-6" }
+          ]
+        },
+        {
+          "nivelMin": 2,
+          "tipo": "decision",
+          "titulo": "Presión social",
+          "texto": "PAMIR debe publicar un comunicado oficial para el mundo. Un asesor te presiona:",
+          "quien": "Asesor de PAMÓN",
+          "dice": "¡Escribe rápido que la crisis es culpa de los otros países! Así nadie nos culpará a nosotros.",
+          "materias": ["Comunicación"],
+          "competencias": ["Resistencia a presión social", "Negociación"],
+          "opciones": [
+            { "texto": "\"La crisis es culpa de los demás países. Nosotros no hicimos nada mal.\"", "puntos": 20, "explicacion": "Culpar a otros sin pruebas daña la confianza entre países.", "efectos": "sociedad-4", "luego": "Los países ofendidos cancelaron acuerdos comerciales con PAMIR.", "efectosLuego": "economia-8" },
+            { "texto": "\"PAMIR atraviesa una crisis energética. Proponemos un acuerdo internacional para estabilizar el precio de la energía.\"", "puntos": 100, "explicacion": "Un mensaje claro, honesto y que propone una solución.", "efectos": "sociedad+5 economia+3" },
+            { "texto": "\"no pasa nada todo esta bien\"", "puntos": 0, "explicacion": "Es falso y tiene errores de escritura (falta la tilde en 'está', la mayúscula y los signos de puntuación).", "efectos": "sociedad-6" }
+          ]
+        },
+        {
+          "nivelMin": 3,
+          "tipo": "decision",
+          "titulo": "Una inversión 'segura'",
+          "texto": "Revisas el informe: la empresa X tuvo éxito solo en <b>3 de sus últimos 10</b> proyectos.",
+          "quien": "ALPA-IA (asistente virtual)",
+          "dice": "Invierte todo el presupuesto de PAMIR en la empresa X. Tiene 90% de probabilidad de éxito.",
+          "materias": ["Matemática"],
+          "competencias": ["Pensamiento crítico", "Análisis de información"],
+          "opciones": [
+            { "texto": "La IA exageró: 3 de 10 es 30%. Mejor repartir la inversión en varios proyectos.", "puntos": 100, "explicacion": "3 ÷ 10 = 30%, no 90%. Diversificar reduce el riesgo.", "efectos": "economia+6" },
+            { "texto": "Invertir todo: 90% es casi seguro.", "puntos": 10, "explicacion": "Confiaste en un dato falso sin revisarlo.", "efectos": "economia-4", "luego": "La empresa X fracasó y PAMIR perdió gran parte de su presupuesto.", "efectosLuego": "economia-10" },
+            { "texto": "Invertir todo porque 3 de 10 es 90%.", "puntos": 0, "explicacion": "3 de 10 es 30%. Un cálculo equivocado llevó a una mala decisión.", "efectos": "economia-12" }
+          ]
+        },
+        {
+          "nivelMin": 4,
+          "tipo": "pregunta",
+          "titulo": "Energía del viento",
+          "texto": "Una empresa ofrece a PAMIR un parque eólico:\n\n<i>\"Our wind farm produces 500 MW when the wind speed is above 12 km/h. On calm days, production drops to 50 MW.\"</i>\n\n¿Qué problema debe resolver PAMIR si solo compra este parque?",
+          "materias": ["Idiomas", "Física"],
+          "competencias": ["Análisis de información", "Resolución de problemas"],
+          "opciones": [
+            { "texto": "En días sin viento la producción baja mucho: necesita baterías u otra fuente de respaldo.", "puntos": 100, "explicacion": "'On calm days, production drops to 50 MW' = en días de calma la producción baja a 50 MW.", "efectos": "tecnologia+4 recursos+3" },
+            { "texto": "Ninguno: el parque produce 500 MW siempre.", "puntos": 0, "explicacion": "Solo produce 500 MW con viento mayor a 12 km/h.", "efectos": "recursos-3" },
+            { "texto": "El parque solo funciona de noche.", "puntos": 0, "explicacion": "El mensaje no habla del día o la noche, sino de la velocidad del viento.", "efectos": "recursos-3" },
+            { "texto": "Necesita comprar 12 turbinas más.", "puntos": 0, "explicacion": "12 km/h es la velocidad del viento, no un número de turbinas.", "efectos": "recursos-3" }
+          ]
+        },
+        {
+          "nivelMin": 4,
+          "tipo": "decision",
+          "titulo": "Energía más barata",
+          "texto": "Para bajar el precio de la energía, PAMIR puede:",
+          "materias": [],
+          "competencias": ["Estrategia", "Toma de decisiones"],
+          "opciones": [
+            { "texto": "Extraer petróleo en una reserva natural protegida.", "puntos": 30, "explicacion": "Hubo petróleo barato, pero en una zona que debía protegerse.", "efectos": "economia+12 recursos+6", "luego": "Un derrame destruyó el ecosistema de la reserva.", "efectosLuego": "ambiente-16 recursos-4" },
+            { "texto": "Firmar acuerdos para comprar energía limpia a países vecinos.", "puntos": 85, "explicacion": "Energía más limpia, aunque PAMIR depende de sus vecinos.", "efectos": "economia+4 ambiente+4" },
+            { "texto": "Aislar casas y edificios para que consuman menos energía (eficiencia energética).", "puntos": 100, "explicacion": "La energía más barata es la que no se desperdicia.", "efectos": "economia+2 ambiente+4", "luego": "Las familias ahorran 30% en su factura de energía cada mes.", "efectosLuego": "economia+6 sociedad+4" }
+          ]
+        },
+        {
+          "nivelMin": 5,
+          "tipo": "pregunta",
+          "titulo": "Crisis internacional: el fondo mundial",
+          "texto": "PAMIR, MORA, TAXIS y SUJAN deben repartir un fondo mundial de <b>US$1,000 millones</b> para enfrentar el cambio climático, <b>según su población</b>:\n\nPAMIR 60 millones · MORA 40 millones · TAXIS 80 millones · SUJAN 20 millones\n\n¿Cuánto le corresponde a SUJAN?",
+          "materias": ["Matemática", "Ciencias Sociales"],
+          "competencias": ["Negociación", "Resolución de problemas", "Estrategia"],
+          "opciones": [
+            { "texto": "US$100 millones", "puntos": 100, "explicacion": "Población total: 200 millones. SUJAN tiene 20 ÷ 200 = 10%. Y 10% de 1,000 millones = 100 millones.", "efectos": "sociedad+5 economia+2" },
+            { "texto": "US$250 millones", "puntos": 20, "explicacion": "Eso sería repartir en partes iguales, pero el acuerdo es según la población.", "efectos": "sociedad-3" },
+            { "texto": "US$20 millones", "puntos": 0, "explicacion": "20 millones es la población de SUJAN, no el dinero que le corresponde.", "efectos": "sociedad-3" },
+            { "texto": "US$300 millones", "puntos": 0, "explicacion": "300 millones es lo que le toca a PAMIR (30%).", "efectos": "sociedad-3" }
+          ]
+        }
+      ]
+    }
+  ]
+}
