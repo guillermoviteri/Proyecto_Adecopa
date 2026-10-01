@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.STP;
 
 public static class Juego
 {
@@ -29,7 +30,6 @@ public static class Juego
         new Color(0.70f, 0.53f, 1f)
     };
 
-    public static int limiteColapso = 10;
     public static string escenaFinal = "Final";
 
     public static bool enPartida;
@@ -84,6 +84,49 @@ public static class Juego
         {
             Debug.LogError("[AlpaBalance] misiones.json tiene un error (revisa comas, comillas y llaves): " + e.Message);
         }
+        var c = datos.config ?? new Config();
+        if (c.preguntasPorNivel == null || c.preguntasPorNivel.Length == 0) c.preguntasPorNivel = new[] { 6, 7, 8, 9, 10 };
+        c.castigoPorError = Mathf.Clamp(c.castigoPorError, 0, 100);
+        c.indicadorInicialMin = Mathf.Clamp(c.indicadorInicialMin, 1, 100);
+        c.indicadorInicialMax = Mathf.Clamp(Mathf.Max(c.indicadorInicialMax, c.indicadorInicialMin), 1, 100);
+        c.limiteColapso = Mathf.Clamp(c.limiteColapso, 0, 99);
+        if (c.puntosParaCorrecto <= 0) c.puntosParaCorrecto = 70;
+        datos.config = c;
+    }
+
+    public static Config Ajustes => Datos.config;
+    public static int limiteColapso => Ajustes.limiteColapso;
+    public static int PuntosCorrecto => Ajustes.puntosParaCorrecto;
+
+    public static float[] EfectosDe(Opcion op, Ejercicio ej)
+    {
+        var d = LeerEfectos(op.efectos);
+        int castigo = Ajustes.castigoPorError;
+        bool fallo = op.puntos < PuntosCorrecto && (!ej.EsDecision || Ajustes.castigoEnDecisiones);
+        if (!fallo || castigo <= 0) return d;
+
+        int peor = -1;
+        for (int i = 0; i < d.Length; i++) if (d[i] < 0 && (peor < 0 || d[i] < d[peor])) peor = i;
+        if (peor < 0)
+        {
+            Opcion mejor = null;
+            if (ej.opciones != null) foreach (var o in ej.opciones) if (o != null && (mejor == null || o.puntos > mejor.puntos)) mejor = o;
+            var m = LeerEfectos(mejor != null ? mejor.efectos : null);
+            for (int i = 0; i < m.Length; i++) if (m[i] > 0 && (peor < 0 || m[i] > m[peor])) peor = i;
+        }
+        if (peor < 0)
+        {
+            peor = 0;
+            for (int i = 1; i < indicadores.Length; i++) if (indicadores[i] < indicadores[peor]) peor = i;
+        }
+        d[peor] = Mathf.Min(d[peor], -castigo);
+        return d;
+    }
+
+    public static int PreguntasDelNivel(int nivel)
+    {
+        var p = Ajustes.preguntasPorNivel;
+        return Mathf.Max(1, p[Mathf.Clamp(nivel - 1, 0, p.Length - 1)]);
     }
 
     public static int Total => Datos.continentes.Length;
@@ -96,7 +139,7 @@ public static class Juego
         actual = "";
         completados.Clear();
         notas.Clear();
-        for (int i = 0; i < indicadores.Length; i++) indicadores[i] = Random.Range(50, 66);
+        for (int i = 0; i < indicadores.Length; i++) indicadores[i] = Random.Range(Ajustes.indicadorInicialMin, Ajustes.indicadorInicialMax + 1);
     }
 
     public static void AsegurarPartida(string clave)

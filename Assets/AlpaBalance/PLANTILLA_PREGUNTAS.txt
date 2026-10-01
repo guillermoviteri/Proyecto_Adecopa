@@ -1,0 +1,40 @@
+COPIA UN BLOQUE Y PEGALO DENTRO DE "ejercicios": [ ... ] DEL CONTINENTE QUE QUIERAS (archivo Resources/misiones.json)
+Entre un bloque y otro va una coma. El ultimo bloque de la lista NO lleva coma al final.
+
+---------- PREGUNTA (tiene respuesta correcta) ----------
+        {
+          "nivelMin": 1,
+          "tipo": "pregunta",
+          "titulo": "Titulo corto",
+          "texto": "Enunciado del problema.\n\n¿Pregunta?",
+          "materias": ["Matemática"],
+          "competencias": ["Resolución de problemas"],
+          "opciones": [
+            { "texto": "Respuesta correcta", "puntos": 100, "explicacion": "Por que es correcta.", "efectos": "economia+5" },
+            { "texto": "Respuesta incorrecta", "puntos": 0, "explicacion": "Por que esta mal.", "efectos": "economia-3" },
+            { "texto": "Otra incorrecta", "puntos": 0, "explicacion": "Por que esta mal.", "efectos": "recursos-3" }
+          ]
+        },
+
+---------- DECISION (no hay respuesta perfecta) ----------
+        {
+          "nivelMin": 2,
+          "tipo": "decision",
+          "titulo": "Titulo corto",
+          "texto": "Situacion.",
+          "quien": "Diplomatico de PAMON",
+          "dice": "Lo que dice el personaje (si no hay personaje, borra quien y dice).",
+          "materias": [],
+          "competencias": ["Toma de decisiones", "Resistencia a presión social"],
+          "opciones": [
+            { "texto": "Opcion A", "puntos": 100, "explicacion": "Que paso.", "efectos": "ambiente+8 economia-5" },
+            { "texto": "Opcion B", "puntos": 30, "explicacion": "Que paso.", "efectos": "economia+10 ambiente-6", "luego": "Lo que pasa años despues.", "efectosLuego": "ambiente-10" }
+          ]
+        },
+
+NOMBRES VALIDOS
+materias: Matemática, Física, Química, Biología, Ciencias Sociales, Comunicación, Idiomas, Tecnología
+competencias: Pensamiento crítico, Resolución de problemas, Toma de decisiones, Análisis de información, Resistencia a presión social, Negociación, Creatividad, Estrategia
+efectos: ambiente, economia, sociedad, recursos, tecnologia  (ejemplo: "sociedad+5 recursos-2")
+
+Despues de editar: en Unity usa AlpaBalance > Revisar misiones.json

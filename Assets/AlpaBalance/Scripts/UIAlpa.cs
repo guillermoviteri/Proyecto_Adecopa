@@ -1,10 +1,42 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
 public static class UIAlpa
 {
     public static Sprite redondo;
+
+    const string letrasEspanol = "áéíóúÁÉÍÓÚñÑüÜ¿¡«»·×÷³";
+
+    public static void ArreglarFuentes(Scene escena)
+    {
+        var normal = TMP_Settings.defaultFontAsset;
+        if (normal == null || !escena.IsValid()) return;
+        var vistas = new HashSet<TMP_FontAsset>();
+        foreach (var r in escena.GetRootGameObjects())
+        {
+            foreach (var t in r.GetComponentsInChildren<TMP_Text>(true))
+            {
+                var f = t.font;
+                if (f == null || f == normal || !vistas.Add(f)) continue;
+                bool falta = false;
+                foreach (char c in letrasEspanol)
+                {
+                    if (!f.HasCharacter(c, true, true))
+                    {
+                        falta = true;
+                        break;
+                    }
+                }
+                if (!falta) continue;
+                if (f.fallbackFontAssetTable == null) f.fallbackFontAssetTable = new List<TMP_FontAsset>();
+                if (!f.fallbackFontAssetTable.Contains(normal)) f.fallbackFontAssetTable.Add(normal);
+                Debug.Log("[AlpaBalance] La fuente '" + f.name + "' no tenía tildes o ñ. Le agregué una fuente de respaldo.");
+            }
+        }
+    }
 
     public static RectTransform Nuevo(string nombre, Transform padre)
     {

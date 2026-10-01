@@ -87,9 +87,26 @@ public class MenuAlpa : MonoBehaviour
     bool saltar;
     bool empezado;
 
+    void Awake()
+    {
+        foreach (var r in gameObject.scene.GetRootGameObjects())
+        {
+            foreach (var mb in r.GetComponentsInChildren<MonoBehaviour>(true))
+            {
+                if (mb == null) continue;
+                string n = mb.GetType().Name;
+                if (n != "IntroSequence" && n != "ContinentRoulette") continue;
+                mb.StopAllCoroutines();
+                mb.enabled = false;
+                Debug.Log("[AlpaBalance] Apagué el script viejo " + n + " en '" + mb.name + "' para que no escriba encima de los subtítulos.");
+            }
+        }
+    }
+
     void Start()
     {
         Juego.escenaMenu = gameObject.scene.name;
+        UIAlpa.ArreglarFuentes(gameObject.scene);
         if (cam == null) cam = Camera.main;
         if (tierra != null) radio = Radio(tierra);
         audioFuente = gameObject.AddComponent<AudioSource>();

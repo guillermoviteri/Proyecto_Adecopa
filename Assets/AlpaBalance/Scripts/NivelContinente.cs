@@ -11,7 +11,7 @@ public class NivelContinente : MonoBehaviour
     [Header("Continente de esta escena (vacío = el que salió en la ruleta)")]
     public string clave;
     public bool mezclarOpciones = true;
-    [Tooltip("0 = todos los desafíos del nivel. Pon 3 para demos cortas.")]
+    [Tooltip("0 = usa preguntasPorNivel del JSON. Pon 3 para demos cortas.")]
     public int maximoDesafios = 0;
 
     [Header("Referencias (las arma el menú AlpaBalance)")]
@@ -60,6 +60,7 @@ public class NivelContinente : MonoBehaviour
 
     void Start()
     {
+        UIAlpa.ArreglarFuentes(gameObject.scene);
         string k = string.IsNullOrEmpty(clave) ? Juego.actual : clave;
         Juego.AsegurarPartida(k);
         audioFuente = gameObject.AddComponent<AudioSource>();
@@ -78,7 +79,23 @@ public class NivelContinente : MonoBehaviour
 
         foreach (var e in cont.ejercicios ?? new Ejercicio[0])
             if (e != null && e.Nivel <= Juego.Nivel && e.opciones != null && e.opciones.Length > 0) lista.Add(e);
-        if (maximoDesafios > 0 && lista.Count > maximoDesafios) lista.RemoveRange(maximoDesafios, lista.Count - maximoDesafios);
+        int cuantas = maximoDesafios > 0 ? maximoDesafios : Juego.PreguntasDelNivel(Juego.Nivel);
+        if (lista.Count > cuantas)
+        {
+            if (Juego.Ajustes.elegirAlAzar)
+            {
+                for (int i = lista.Count - 1; i > 0; i--)
+                {
+                    int j = UnityEngine.Random.Range(0, i + 1);
+                    var x = lista[i];
+                    lista[i] = lista[j];
+                    lista[j] = x;
+                }
+            }
+            lista.RemoveRange(cuantas, lista.Count - cuantas);
+        }
+        var orden = new List<Ejercicio>(lista);
+        lista.Sort((a, b) => a.Nivel != b.Nivel ? a.Nivel.CompareTo(b.Nivel) : orden.IndexOf(a).CompareTo(orden.IndexOf(b)));
 
         if (textoContinente != null) textoContinente.text = cont.nombre.ToUpperInvariant();
         Info();
@@ -158,7 +175,7 @@ public class NivelContinente : MonoBehaviour
             {
                 var h = b.GetComponent<OpcionHover>();
                 if (h == null) h = b.gameObject.AddComponent<OpcionHover>();
-                h.entrar = () => { if (!respondido) indicadores.Previa(Juego.LeerEfectos(o.efectos)); };
+                h.entrar = () => { if (!respondido) indicadores.Previa(Juego.EfectosDe(o, ej)); };
                 h.salir = () => { if (!respondido) indicadores.QuitarPrevia(); };
             }
             botones.Add(b);
@@ -194,7 +211,7 @@ public class NivelContinente : MonoBehaviour
         respondido = true;
         if (indicadores != null) indicadores.QuitarPrevia();
 
-        var d = Juego.LeerEfectos(op.efectos);
+        var d = Juego.EfectosDe(op, ej);
         Juego.Aplicar(d);
         if (indicadores != null) indicadores.Mostrar(d);
         Juego.Anotar(ej.materias, op.puntos);
@@ -203,7 +220,7 @@ public class NivelContinente : MonoBehaviour
 
         Opcion mejor = null;
         foreach (var o in mostradas) if (mejor == null || o.puntos > mejor.puntos) mejor = o;
-        bool bien = op.puntos >= 70;
+        bool bien = op.puntos >= Juego.PuntosCorrecto;
 
         for (int i = 0; i < botones.Count; i++)
         {

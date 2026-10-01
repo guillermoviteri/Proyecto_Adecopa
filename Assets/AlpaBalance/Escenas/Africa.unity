@@ -436,7 +436,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 91062351}
-  - component: {fileID: 91062350}
   m_Layer: 0
   m_Name: "ModeloContinente (pon aqu\xED tu modelo)"
   m_TagString: Untagged
@@ -444,19 +443,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &91062350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91062349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948235fff46c0ea0563191d58d23f222, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GirarLento
-  velocidad: 10
 --- !u!4 &91062351
 Transform:
   m_ObjectHideFlags: 0
@@ -1802,6 +1788,7 @@ GameObject:
   - component: {fileID: 481315769}
   - component: {fileID: 481315768}
   - component: {fileID: 481315767}
+  - component: {fileID: 481315770}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1883,6 +1870,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &481315770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481315766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &483852557
 GameObject:
   m_ObjectHideFlags: 0
@@ -5414,7 +5445,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalScale.y
@@ -5422,35 +5453,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.63
+      value: -3.634068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.16
+      value: -0.53196895
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.12
+      value: 5.7522864
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9205279
+      value: 0.9235328
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.37129188
+      value: -0.37250406
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.045461867
+      value: -0.034136143
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.11271161
+      value: -0.08463219
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5462,8 +5493,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -13.961
+      value: -10.472
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f7e51be172b5f294e80f2a4a958e2994, type: 2}
     - target: {fileID: 919132149155446097, guid: 0334c46d618f7954ba10ffa26b36f870, type: 3}
       propertyPath: m_Name
       value: AFRICA

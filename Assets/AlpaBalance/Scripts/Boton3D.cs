@@ -9,6 +9,7 @@ public class Boton3D : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     public float escalaHover = 1.12f;
     public float velocidad = 10f;
     public bool cambiarColor = true;
+    public bool soloAclarar = true;
     public Color colorHover = new Color(0.4f, 0.9f, 1f);
 
     Vector3 escalaBase;
@@ -20,16 +21,30 @@ public class Boton3D : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     void Awake()
     {
         escalaBase = transform.localScale;
-        if (GetComponent<Collider>() == null)
-        {
-            var mf = GetComponent<MeshFilter>();
-            if (mf != null && mf.sharedMesh != null) gameObject.AddComponent<MeshCollider>().sharedMesh = mf.sharedMesh;
-            else gameObject.AddComponent<BoxCollider>();
-        }
+        if (GetComponentInChildren<Collider>() == null) PonerCollider();
         rend = GetComponent<Renderer>();
         if (rend == null) rend = GetComponentInChildren<Renderer>();
         puedeColor = rend != null && rend.sharedMaterial != null && (rend.sharedMaterial.HasProperty("_BaseColor") || rend.sharedMaterial.HasProperty("_Color"));
         if (puedeColor) colorBase = rend.material.color;
+    }
+
+    void PonerCollider()
+    {
+        var bc = gameObject.AddComponent<BoxCollider>();
+        var mf = GetComponent<MeshFilter>();
+        if (mf != null && mf.sharedMesh != null)
+        {
+            bc.center = mf.sharedMesh.bounds.center;
+            bc.size = mf.sharedMesh.bounds.size;
+            return;
+        }
+        var rs = GetComponentsInChildren<Renderer>();
+        if (rs.Length == 0) return;
+        var b = rs[0].bounds;
+        for (int i = 1; i < rs.Length; i++) b.Encapsulate(rs[i].bounds);
+        Vector3 s = transform.lossyScale;
+        bc.center = transform.InverseTransformPoint(b.center);
+        bc.size = new Vector3(b.size.x / Mathf.Max(0.0001f, Mathf.Abs(s.x)), b.size.y / Mathf.Max(0.0001f, Mathf.Abs(s.y)), b.size.z / Mathf.Max(0.0001f, Mathf.Abs(s.z)));
     }
 
     void Update()
@@ -47,7 +62,9 @@ public class Boton3D : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 
     void Pintar(bool hover)
     {
-        if (cambiarColor && puedeColor && rend != null) rend.material.color = hover ? colorHover : colorBase;
+        if (!cambiarColor || !puedeColor || rend == null) return;
+        Color c = soloAclarar ? Color.Lerp(colorBase, Color.white, 0.35f) : colorHover;
+        rend.material.color = hover ? c : colorBase;
     }
 
     public void OnPointerEnter(PointerEventData e)

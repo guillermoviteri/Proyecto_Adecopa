@@ -22,6 +22,7 @@ public class PantallaFinal : MonoBehaviour
 
     void Start()
     {
+        UIAlpa.ArreglarFuentes(gameObject.scene);
         if (!Juego.enPartida) Juego.NuevaPartida();
         else if (Juego.completados.Count >= Juego.Total) Juego.GuardarResultado();
 

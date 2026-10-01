@@ -1,0 +1,15 @@
+newmtl PlacaBotonExit
+Kd 0.860 0.220 0.270
+Ka 0 0 0
+Ks 0.3 0.3 0.3
+Ns 60
+d 1
+illum 2
+
+newmtl Letras
+Kd 1 1 1
+Ka 0 0 0
+Ks 0.3 0.3 0.3
+Ns 60
+d 1
+illum 2

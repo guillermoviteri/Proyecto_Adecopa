@@ -146,7 +146,7 @@ public static class ConstructorAlpa
             {
                 if (!preguntado)
                 {
-                    pisar = EditorUtility.DisplayDialog("AlpaBalance", "Algunas escenas ya existen. ¿Reemplazarlas? (se pierde lo que les agregaste)", "Reemplazar", "Conservarlas");
+                    pisar = !EditorUtility.DisplayDialog("AlpaBalance", "Algunas escenas ya existen.\n\n¿Las conservo? (recomendado: no se toca nada de lo que agregaron)\n\nSi eliges Reemplazar se BORRAN los modelos y cambios que pusieron en ellas.", "Conservarlas", "Reemplazar (borra todo)");
                     preguntado = true;
                 }
                 if (!pisar) continue;
@@ -165,7 +165,7 @@ public static class ConstructorAlpa
         {
             if (!preguntado)
             {
-                pisar = EditorUtility.DisplayDialog("AlpaBalance", "La escena Final ya existe. ¿Reemplazarla?", "Reemplazar", "Conservarla");
+                pisar = !EditorUtility.DisplayDialog("AlpaBalance", "La escena Final ya existe. ¿La conservo?", "Conservarla", "Reemplazar (borra todo)");
                 preguntado = true;
             }
             hacerFinal = pisar;
@@ -233,6 +233,10 @@ public static class ConstructorAlpa
             resumen.AppendLine(c.nombre + " (" + c.clave + "): " + n + " desafíos   [N1:" + porNivel[1] + " N2:" + porNivel[2] + " N3:" + porNivel[3] + " N4:" + porNivel[4] + " N5:" + porNivel[5] + "]");
         }
         if (Juego.Datos.continentes.Length == 0) errores.AppendLine("! No se pudo leer ningún continente (mira la consola).");
+        var cfg = Juego.Ajustes;
+        resumen.AppendLine("\nPreguntas por nivel: " + string.Join(", ", cfg.preguntasPorNivel) + (cfg.elegirAlAzar ? " (al azar)" : " (en orden)"));
+        resumen.AppendLine("Indicadores al inicio: " + cfg.indicadorInicialMin + " a " + cfg.indicadorInicialMax + "%   ·   Se pierde con: " + cfg.limiteColapso + "%   ·   Correcta desde: " + cfg.puntosParaCorrecto + " puntos");
+        resumen.AppendLine("Cada error baja como mínimo: " + cfg.castigoPorError + (cfg.castigoEnDecisiones ? " (también en decisiones)" : " (solo en preguntas)"));
         Aviso(resumen + "\n" + (problemas == 0 && Juego.Datos.continentes.Length > 0 ? "Todo bien." : errores.ToString()));
     }
 
