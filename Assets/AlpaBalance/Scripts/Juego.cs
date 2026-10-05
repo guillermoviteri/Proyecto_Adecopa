@@ -35,6 +35,7 @@ public static class Juego
     public static bool enPartida;
     public static bool saltarIntro;
     public static bool guardado;
+    public static int erroresSeguidos;
     public static string actual = "";
     public static string escenaMenu = "";
     public static List<string> completados = new List<string>();
@@ -49,6 +50,7 @@ public static class Juego
         enPartida = false;
         saltarIntro = false;
         guardado = false;
+        erroresSeguidos = 0;
         actual = "";
         escenaMenu = "";
         completados = new List<string>();
@@ -87,6 +89,8 @@ public static class Juego
         var c = datos.config ?? new Config();
         if (c.preguntasPorNivel == null || c.preguntasPorNivel.Length == 0) c.preguntasPorNivel = new[] { 6, 7, 8, 9, 10 };
         c.castigoPorError = Mathf.Clamp(c.castigoPorError, 0, 100);
+        c.castigoExtraPorNivel = Mathf.Clamp(c.castigoExtraPorNivel, 0, 50);
+        c.castigoPorRacha = Mathf.Clamp(c.castigoPorRacha, 0, 50);
         c.indicadorInicialMin = Mathf.Clamp(c.indicadorInicialMin, 1, 100);
         c.indicadorInicialMax = Mathf.Clamp(Mathf.Max(c.indicadorInicialMax, c.indicadorInicialMin), 1, 100);
         c.limiteColapso = Mathf.Clamp(c.limiteColapso, 0, 99);
@@ -98,12 +102,30 @@ public static class Juego
     public static int limiteColapso => Ajustes.limiteColapso;
     public static int PuntosCorrecto => Ajustes.puntosParaCorrecto;
 
+    public static bool EsFallo(Opcion op, Ejercicio ej)
+    {
+        return op.puntos < PuntosCorrecto && (!ej.EsDecision || Ajustes.castigoEnDecisiones);
+    }
+
+    public static int CastigoActual()
+    {
+        var a = Ajustes;
+        if (a.castigoPorError <= 0) return 0;
+        int c = a.castigoPorError + a.castigoExtraPorNivel * (Nivel - 1) + a.castigoPorRacha * erroresSeguidos;
+        return Mathf.Clamp(c, 0, 100);
+    }
+
+    public static void RegistrarRespuesta(Opcion op, Ejercicio ej)
+    {
+        if (EsFallo(op, ej)) erroresSeguidos++;
+        else if (op.puntos >= PuntosCorrecto) erroresSeguidos = 0;
+    }
+
     public static float[] EfectosDe(Opcion op, Ejercicio ej)
     {
         var d = LeerEfectos(op.efectos);
-        int castigo = Ajustes.castigoPorError;
-        bool fallo = op.puntos < PuntosCorrecto && (!ej.EsDecision || Ajustes.castigoEnDecisiones);
-        if (!fallo || castigo <= 0) return d;
+        int castigo = CastigoActual();
+        if (!EsFallo(op, ej) || castigo <= 0) return d;
 
         int peor = -1;
         for (int i = 0; i < d.Length; i++) if (d[i] < 0 && (peor < 0 || d[i] < d[peor])) peor = i;
@@ -136,6 +158,7 @@ public static class Juego
     {
         enPartida = true;
         guardado = false;
+        erroresSeguidos = 0;
         actual = "";
         completados.Clear();
         notas.Clear();

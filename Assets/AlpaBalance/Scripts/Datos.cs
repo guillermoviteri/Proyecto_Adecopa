@@ -1,89 +1,65 @@
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
+using System;
 
-public class Boton3D : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+[Serializable]
+public class DatosJuego
 {
-    public UnityEvent alClic = new UnityEvent();
-    public bool activo = true;
-    public float escalaHover = 1.12f;
-    public float velocidad = 10f;
-    public bool cambiarColor = true;
-    public bool soloAclarar = true;
-    public Color colorHover = new Color(0.4f, 0.9f, 1f);
+    public Config config = new Config();
+    public Continente[] continentes;
+}
 
-    Vector3 escalaBase;
-    bool encima;
-    Renderer rend;
-    Color colorBase;
-    bool puedeColor;
+[Serializable]
+public class Config
+{
+    public int[] preguntasPorNivel = { 6, 7, 8, 9, 10 };
+    public bool elegirAlAzar = true;
+    public int indicadorInicialMin = 40;
+    public int indicadorInicialMax = 55;
+    public int limiteColapso = 15;
+    public int puntosParaCorrecto = 70;
+    public int castigoPorError = 10;
+    public int castigoExtraPorNivel = 2;
+    public int castigoPorRacha = 3;
+    public bool castigoEnDecisiones = false;
+}
 
-    void Awake()
-    {
-        escalaBase = transform.localScale;
-        if (GetComponentInChildren<Collider>() == null) PonerCollider();
-        rend = GetComponent<Renderer>();
-        if (rend == null) rend = GetComponentInChildren<Renderer>();
-        puedeColor = rend != null && rend.sharedMaterial != null && (rend.sharedMaterial.HasProperty("_BaseColor") || rend.sharedMaterial.HasProperty("_Color"));
-        if (puedeColor) colorBase = rend.material.color;
-    }
+[Serializable]
+public class Continente
+{
+    public string clave;
+    public string nombre;
+    public string escena;
+    public string color;
+    public string pais;
+    public string crisis;
+    public Ejercicio[] ejercicios;
 
-    void PonerCollider()
-    {
-        var bc = gameObject.AddComponent<BoxCollider>();
-        var mf = GetComponent<MeshFilter>();
-        if (mf != null && mf.sharedMesh != null)
-        {
-            bc.center = mf.sharedMesh.bounds.center;
-            bc.size = mf.sharedMesh.bounds.size;
-            return;
-        }
-        var rs = GetComponentsInChildren<Renderer>();
-        if (rs.Length == 0) return;
-        var b = rs[0].bounds;
-        for (int i = 1; i < rs.Length; i++) b.Encapsulate(rs[i].bounds);
-        Vector3 s = transform.lossyScale;
-        bc.center = transform.InverseTransformPoint(b.center);
-        bc.size = new Vector3(b.size.x / Mathf.Max(0.0001f, Mathf.Abs(s.x)), b.size.y / Mathf.Max(0.0001f, Mathf.Abs(s.y)), b.size.z / Mathf.Max(0.0001f, Mathf.Abs(s.z)));
-    }
+    public string Escena => string.IsNullOrEmpty(escena) ? clave : escena;
+}
 
-    void Update()
-    {
-        Vector3 meta = encima && activo ? escalaBase * escalaHover : escalaBase;
-        transform.localScale = Vector3.Lerp(transform.localScale, meta, Time.deltaTime * velocidad);
-    }
+[Serializable]
+public class Ejercicio
+{
+    public int nivelMin;
+    public string tipo;
+    public string titulo;
+    public string texto;
+    public string quien;
+    public string dice;
+    public string[] materias;
+    public string[] competencias;
+    public Opcion[] opciones;
 
-    void OnDisable()
-    {
-        encima = false;
-        transform.localScale = escalaBase;
-        Pintar(false);
-    }
+    public bool EsDecision => !string.IsNullOrEmpty(tipo) && tipo.Trim().ToLower().StartsWith("decis");
+    public int Nivel => nivelMin <= 0 ? 1 : nivelMin;
+}
 
-    void Pintar(bool hover)
-    {
-        if (!cambiarColor || !puedeColor || rend == null) return;
-        Color c = soloAclarar ? Color.Lerp(colorBase, Color.white, 0.35f) : colorHover;
-        rend.material.color = hover ? c : colorBase;
-    }
-
-    public void OnPointerEnter(PointerEventData e)
-    {
-        encima = true;
-        if (activo) Pintar(true);
-    }
-
-    public void OnPointerExit(PointerEventData e)
-    {
-        encima = false;
-        Pintar(false);
-    }
-
-    public void OnPointerClick(PointerEventData e)
-    {
-        if (!activo) return;
-        encima = false;
-        Pintar(false);
-        alClic.Invoke();
-    }
+[Serializable]
+public class Opcion
+{
+    public string texto;
+    public int puntos;
+    public string explicacion;
+    public string efectos;
+    public string luego;
+    public string efectosLuego;
 }

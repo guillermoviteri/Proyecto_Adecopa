@@ -287,7 +287,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15.87, z: -59.05}
+  m_LocalPosition: {x: 3, y: 20.9, z: -50.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -674,7 +674,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1b5d2d34c17de164799a0a0a76468fe7, type: 2}
   - {fileID: 11400000, guid: 3ea8c14cda842fd4d8fbb3f88e5db539, type: 2}
   - {fileID: 11400000, guid: 2f2920bbe28bd8d4bab5c6fbaf52aebe, type: 2}
-  - {fileID: 11400000, guid: 4149ba20dedd2154aaf6c0c3d824251d, type: 2}
+  - {fileID: 0}
   rouletteLights:
   - {fileID: 0}
   - {fileID: 0}
@@ -1219,6 +1219,7 @@ MonoBehaviour:
   escalaHover: 1.12
   velocidad: 10
   cambiarColor: 1
+  soloAclarar: 1
   colorHover: {r: 0.4, g: 0.9, b: 1, a: 1}
 --- !u!1 &1461736157
 GameObject:
@@ -1500,6 +1501,7 @@ MonoBehaviour:
   escalaHover: 1.12
   velocidad: 10
   cambiarColor: 1
+  soloAclarar: 1
   colorHover: {r: 0.4, g: 0.9, b: 1, a: 1}
 --- !u!65 &1685453351
 BoxCollider:

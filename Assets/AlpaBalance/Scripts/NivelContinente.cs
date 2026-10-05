@@ -77,29 +77,31 @@ public class NivelContinente : MonoBehaviour
         }
         Juego.actual = cont.clave;
 
-        foreach (var e in cont.ejercicios ?? new Ejercicio[0])
-            if (e != null && e.Nivel <= Juego.Nivel && e.opciones != null && e.opciones.Length > 0) lista.Add(e);
-        int cuantas = maximoDesafios > 0 ? maximoDesafios : Juego.PreguntasDelNivel(Juego.Nivel);
-        if (lista.Count > cuantas)
-        {
-            if (Juego.Ajustes.elegirAlAzar)
-            {
-                for (int i = lista.Count - 1; i > 0; i--)
-                {
-                    int j = UnityEngine.Random.Range(0, i + 1);
-                    var x = lista[i];
-                    lista[i] = lista[j];
-                    lista[j] = x;
-                }
-            }
-            lista.RemoveRange(cuantas, lista.Count - cuantas);
-        }
-        var orden = new List<Ejercicio>(lista);
-        lista.Sort((a, b) => a.Nivel != b.Nivel ? a.Nivel.CompareTo(b.Nivel) : orden.IndexOf(a).CompareTo(orden.IndexOf(b)));
+        ElegirDesafios();
 
         if (textoContinente != null) textoContinente.text = cont.nombre.ToUpperInvariant();
         Info();
         MostrarIntro();
+    }
+
+    void ElegirDesafios()
+    {
+        int nivel = Juego.Nivel;
+        int cuantas = maximoDesafios > 0 ? maximoDesafios : Juego.PreguntasDelNivel(nivel);
+        var porNivel = new List<Ejercicio>[nivel + 1];
+        for (int n = 1; n <= nivel; n++) porNivel[n] = new List<Ejercicio>();
+        foreach (var e in cont.ejercicios ?? new Ejercicio[0])
+            if (e != null && e.Nivel <= nivel && e.opciones != null && e.opciones.Length > 0) porNivel[e.Nivel].Add(e);
+
+        for (int n = nivel; n >= 1 && lista.Count < cuantas; n--)
+        {
+            var grupo = porNivel[n];
+            if (Juego.Ajustes.elegirAlAzar) Mezclar(grupo);
+            for (int i = 0; i < grupo.Count && lista.Count < cuantas; i++) lista.Add(grupo[i]);
+        }
+
+        var orden = new List<Ejercicio>(lista);
+        lista.Sort((a, b) => a.Nivel != b.Nivel ? a.Nivel.CompareTo(b.Nivel) : orden.IndexOf(a).CompareTo(orden.IndexOf(b)));
     }
 
     void Info()
@@ -114,7 +116,8 @@ public class NivelContinente : MonoBehaviour
         Mensaje("<color=#FF5A5A>ALERTA INTERNACIONAL</color>",
             "<b>AÑO 2100 · " + cont.nombre.ToUpperInvariant() + "</b>\n\n" + cont.crisis +
             "\n\n<size=80%><color=#9FB3D9>Nivel " + Juego.Nivel + " de " + Juego.Total + " · " + lista.Count +
-            " desafíos. Cuida el equilibrio del planeta: si un indicador baja a " + Juego.limiteColapso + "% o menos, la partida termina.</color></size>",
+            " desafíos. Cada respuesta incorrecta baja al menos " + Juego.CastigoActual() + " puntos un indicador, y el castigo crece con cada error seguido." +
+            " Si un indicador baja a " + Juego.limiteColapso + "% o menos, la partida termina.</color></size>",
             "Aceptar misión", Empezar, null, null);
     }
 
@@ -212,6 +215,9 @@ public class NivelContinente : MonoBehaviour
         if (indicadores != null) indicadores.QuitarPrevia();
 
         var d = Juego.EfectosDe(op, ej);
+        int castigo = Juego.CastigoActual();
+        bool castigado = Juego.EsFallo(op, ej) && castigo > 0;
+        Juego.RegistrarRespuesta(op, ej);
         Juego.Aplicar(d);
         if (indicadores != null) indicadores.Mostrar(d);
         Juego.Anotar(ej.materias, op.puntos);
@@ -243,6 +249,13 @@ public class NivelContinente : MonoBehaviour
         if (!string.IsNullOrEmpty(op.explicacion)) sb.Append(op.explicacion);
         string ef = TextoEfectos(d);
         if (ef.Length > 0) sb.Append("\n<size=85%>").Append(ef).Append("</size>");
+        if (castigado)
+        {
+            sb.Append("\n<size=85%><color=#FF7B7B>Castigo por error: mínimo -").Append(castigo).Append('.');
+            if (Juego.erroresSeguidos > 1) sb.Append(" Llevas ").Append(Juego.erroresSeguidos).Append(" errores seguidos.");
+            if (Juego.Ajustes.castigoPorRacha > 0) sb.Append(" Si vuelves a fallar, el castigo será mayor.");
+            sb.Append("</color></size>");
+        }
         if (!string.IsNullOrEmpty(op.luego)) sb.Append("\n<size=85%><color=#FFC83D>Esta decisión tendrá consecuencias con los años...</color></size>");
         textoRetro.text = sb.ToString();
         panelRetro.SetActive(true);
@@ -365,7 +378,7 @@ public class NivelContinente : MonoBehaviour
         return sb.ToString();
     }
 
-    static void Mezclar(List<Opcion> l)
+    static void Mezclar<T>(List<T> l)
     {
         for (int i = l.Count - 1; i > 0; i--)
         {
