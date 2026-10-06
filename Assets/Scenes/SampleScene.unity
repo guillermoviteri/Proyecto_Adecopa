@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: c824e141fe9a02b4db6d385110e1eb87, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a64b16200aceffc41bae2464d473c240, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -686,7 +686,7 @@ MonoBehaviour:
   mainCamera: {fileID: 330585545}
   earthTransform: {fileID: 0}
   zoomDuration: 2.5
-  resultText: {fileID: 956381928}
+  resultText: {fileID: 0}
 --- !u!4 &646603887
 Transform:
   m_ObjectHideFlags: 0
@@ -1109,23 +1109,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1ad508bb3a1d1c24c877a8146290746f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ad508bb3a1d1c24c877a8146290746f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ad508bb3a1d1c24c877a8146290746f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ad508bb3a1d1c24c877a8146290746f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.61
+      value: 1.31
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ad508bb3a1d1c24c877a8146290746f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18
+      value: 15.38
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ad508bb3a1d1c24c877a8146290746f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1412,23 +1412,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f5315ab62f7c640478859d94d4a82fcf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5315ab62f7c640478859d94d4a82fcf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5315ab62f7c640478859d94d4a82fcf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5315ab62f7c640478859d94d4a82fcf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.61
+      value: 1.31
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5315ab62f7c640478859d94d4a82fcf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.54
+      value: 8.04
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5315ab62f7c640478859d94d4a82fcf, type: 3}
       propertyPath: m_LocalPosition.z
