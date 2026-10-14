@@ -111,6 +111,9 @@ public class MenuAlpa : MonoBehaviour
         if (tierra != null) radio = Radio(tierra);
         audioFuente = gameObject.AddComponent<AudioSource>();
         audioFuente.playOnAwake = false;
+        if (sonidoTic == null) sonidoTic = Resources.Load<AudioClip>("Sonidos/tic");
+        if (sonidoElegido == null) sonidoElegido = Resources.Load<AudioClip>("Sonidos/elegido");
+        if (sonidoZoom == null) sonidoZoom = Resources.Load<AudioClip>("Sonidos/zoom");
         ArmarRuleta();
         ApagarViejos(botonComenzar);
         ApagarViejos(botonSalir);

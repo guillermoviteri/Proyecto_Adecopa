@@ -5,7 +5,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.STP;
 
 public static class Juego
 {

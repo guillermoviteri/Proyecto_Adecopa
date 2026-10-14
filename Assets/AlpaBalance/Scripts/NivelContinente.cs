@@ -41,6 +41,8 @@ public class NivelContinente : MonoBehaviour
     public AudioClip sonidoBien;
     public AudioClip sonidoMal;
     public AudioClip sonidoDecision;
+    public AudioClip sonidoSuperado;
+    public AudioClip sonidoPerder;
 
     static readonly Color azulOpcion = new Color(0.11f, 0.17f, 0.32f, 0.95f);
     static readonly Color apagada = new Color(0.11f, 0.17f, 0.32f, 0.45f);
@@ -65,6 +67,11 @@ public class NivelContinente : MonoBehaviour
         Juego.AsegurarPartida(k);
         audioFuente = gameObject.AddComponent<AudioSource>();
         audioFuente.playOnAwake = false;
+        if (sonidoBien == null) sonidoBien = Resources.Load<AudioClip>("Sonidos/correcto");
+        if (sonidoMal == null) sonidoMal = Resources.Load<AudioClip>("Sonidos/incorrecto");
+        if (sonidoDecision == null) sonidoDecision = Resources.Load<AudioClip>("Sonidos/decision");
+        if (sonidoSuperado == null) sonidoSuperado = Resources.Load<AudioClip>("Sonidos/superado");
+        if (sonidoPerder == null) sonidoPerder = Resources.Load<AudioClip>("Sonidos/perder");
         if (plantillaOpcion != null) plantillaOpcion.gameObject.SetActive(false);
         if (tarjeta != null) tarjeta.gameObject.SetActive(false);
 
@@ -305,12 +312,15 @@ public class NivelContinente : MonoBehaviour
         Juego.Completar(cont.clave);
         sb.Append("\n<size=85%><color=#9FB3D9>Continentes completados: ").Append(Juego.completados.Count).Append(" de ").Append(Juego.Total).Append("</color></size>");
         bool fin = Juego.Pendientes().Count == 0;
+        Sonar(sonidoSuperado);
         Mensaje("<color=#5CFF9D>¡" + cont.nombre.ToUpperInvariant() + " SUPERADO!</color>", sb.ToString(),
             fin ? "Ver resultados finales" : "Girar la ruleta", fin ? (Action)IrAlFinal : VolverARuleta, null, null);
     }
 
     void Perdiste()
     {
+        ApagarMusica();
+        Sonar(sonidoPerder);
         tarjeta.gameObject.SetActive(false);
         int i = Juego.Colapso();
         string que = i >= 0 ? Juego.indicadoresNombres[i] : "El planeta";
@@ -423,5 +433,11 @@ public class NivelContinente : MonoBehaviour
     void Sonar(AudioClip c)
     {
         if (c != null && audioFuente != null) audioFuente.PlayOneShot(c);
+    }
+
+    void ApagarMusica()
+    {
+        foreach (var s in FindObjectsByType<AudioSource>(FindObjectsSortMode.None))
+            if (s != audioFuente && s.isPlaying) s.Stop();
     }
 }
