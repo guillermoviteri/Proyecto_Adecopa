@@ -5027,7 +5027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948235fff46c0ea0563191d58d23f222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GirarLento
-  velocidad: 10
+  velocidad: 0
 --- !u!4 &1592699997
 Transform:
   m_ObjectHideFlags: 0
@@ -6762,6 +6762,8 @@ MonoBehaviour:
   sonidoBien: {fileID: 0}
   sonidoMal: {fileID: 0}
   sonidoDecision: {fileID: 0}
+  sonidoSuperado: {fileID: 0}
+  sonidoPerder: {fileID: 0}
 --- !u!4 &2028162429
 Transform:
   m_ObjectHideFlags: 0
